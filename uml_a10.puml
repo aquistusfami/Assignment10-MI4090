@@ -1,0 +1,87 @@
+@startuml uml_a10
+
+!pragma layout smetana
+skinparam backgroundColor white
+skinparam defaultFontName DejaVu Sans
+skinparam dpi 150
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+hide circle
+hide empty members
+
+interface IDevice
+{
+  + TurnOff(): void
+  + TurnOn(): void
+}
+
+interface ILockable
+{
+  + Lock(): void
+  + Unlock(): void
+}
+
+class SmartDoor
+{
+  - name: string
+  + SmartDoor(name: string)
+  + Lock(): void
+  + Unlock(): void
+  + TurnOff(): void
+  + TurnOn(): void
+}
+
+class SmartFan
+{
+  - name: string
+  + SmartFan(name: string)
+  + TurnOff(): void
+  + TurnOn(): void
+}
+
+class SmartLight
+{
+  - name: string
+  + SmartLight(name: string)
+  + TurnOff(): void
+  + TurnOn(): void
+}
+
+class DeviceFactory
+{
+  {static} + Create(type: string, name: string): IDevice
+}
+
+class HomeConfiguration
+{
+  {static} - lazy : Lazy<HomeConfiguration>
+  {static} + Instance : HomeConfiguration
+  + HomeName: string
+  + NightLevel: int
+  - HomeConfiguration() 
+}
+
+class SmartHomeFacade <<sealed>>
+{
+  - light : IDevice
+  - fan : IDevice
+  - door : ILockable
+  + SmartHomeFacade(light: IDevice, fan: IDevice,\n door: ILockable)
+  + GoToWork(): void
+  + GoToSleep(): void
+}
+SmartDoor ..|> IDevice
+SmartDoor ..|> ILockable
+SmartFan ..|> IDevice
+SmartLight ..|> IDevice
+DeviceFactory ..> SmartDoor : creates
+DeviceFactory ..> SmartFan : creates
+DeviceFactory ..> SmartLight : creates
+
+SmartHomeFacade --> IDevice
+SmartHomeFacade --> ILockable
+SmartHomeFacade ..> HomeConfiguration : uses
+
+@enduml
