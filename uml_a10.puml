@@ -26,6 +26,8 @@ interface ILockable
 class SmartDoor
 {
   - name: string
+  + IsOn: bool
+  + IsLocked: bool
   + SmartDoor(name: string)
   + Lock(): void
   + Unlock(): void
@@ -36,6 +38,7 @@ class SmartDoor
 class SmartFan
 {
   - name: string
+  + IsOn: bool
   + SmartFan(name: string)
   + TurnOff(): void
   + TurnOn(): void
@@ -44,6 +47,7 @@ class SmartFan
 class SmartLight
 {
   - name: string
+  + IsOn: bool
   + SmartLight(name: string)
   + TurnOff(): void
   + TurnOn(): void
