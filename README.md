@@ -16,6 +16,6 @@
 
 ### 4. Nếu bỏ SmartHomeFacade, client sẽ phải biết thêm những chi tiết nào?
 
-- nếu có `SmartHomeFacade` client phải biết gọi các thiết bị theo đúng thứ tự để hoạt động theo ý của client và phải biết thông tin về `HomeConfiguration` là có `NightLightLevel` để in ra. đồng thời nếu đổi chế độ Đi ngủ, mọi nơi gọi lẻ đều phải sửa theo.
+- nếu bỏ `SmartHomeFacade` client phải biết gọi các thiết bị theo đúng thứ tự để hoạt động theo ý của client và phải biết thông tin về `HomeConfiguration` là có `NightLightLevel` để in ra. đồng thời nếu đổi chế độ Đi ngủ, mọi nơi gọi lẻ đều phải sửa theo.
 
  

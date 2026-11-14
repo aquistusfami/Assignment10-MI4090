@@ -63,7 +63,7 @@ class HomeConfiguration
   {static} - lazy : Lazy<HomeConfiguration>
   {static} + Instance : HomeConfiguration
   + HomeName: string
-  + NightLevel: int
+  + NightLightLevel: int
   - HomeConfiguration() 
 }
 

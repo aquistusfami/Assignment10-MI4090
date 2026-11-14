@@ -12,6 +12,17 @@ class Program
 {
     static void Main(string[] args)
     {
+        static void Check<T>(IDevice device)
+        {
+            if (device is T)
+            {
+                Console.WriteLine($"[1]: {typeof(T).Name} OK");
+            }
+            else
+            {
+                Console.WriteLine($"[1]: {typeof(T).Name} FAIL");
+            }
+        }
         // t1
         try
         {
@@ -21,24 +32,13 @@ class Program
             IDevice cua = DeviceFactory.Create("Door ", "Cua chinh");
 
             // check có đúng là kiểu đối tượng không
-            if (den is SmartLight)
-            {
-                Console.WriteLine($"[1]: SmartLight OK");
-            }
-
-            if (quat is SmartFan)
-            {
-                Console.WriteLine($"[1]: SmartFan OK");
-            }
-
-            if (cua is SmartDoor)
-            {
-                Console.WriteLine($"[1]: SmartDoor OK");
-            }
+            Check<SmartLight>(den);
+            Check<SmartFan>(quat);
+            Check<SmartDoor>(cua);
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"{ex}");
+            Console.WriteLine($"[1]: FAIL {ex}");
         }
         // t2
         try
